@@ -1,7 +1,12 @@
 def call(List allowedBranches = ["main"]) {
 
     script {
-        def currentBranch = env.BRANCH_NAME ?: "unknown"
+        def currentBranch = env.BRANCH_NAME
+
+        if (!currentBranch) {
+            echo "No branch detected (normal pipeline job). Skipping validation ✅"
+            return
+        }
 
         echo "Current Branch: ${currentBranch}"
 
@@ -12,4 +17,3 @@ def call(List allowedBranches = ["main"]) {
         echo "Branch validation passed ✅"
     }
 }
-
