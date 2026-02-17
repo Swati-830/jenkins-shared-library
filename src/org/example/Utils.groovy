@@ -2,13 +2,15 @@ package org.example
 
 class Utils implements Serializable {
 
-    def script
+    def steps
 
-    Utils(script) {
-        this.script = script
+    Utils(steps) {
+        this.steps = steps
     }
 
     def printMessage(msg) {
-        script.echo "Message: ${msg}"
+        steps.echo "Message: ${msg}"
     }
 }
+
+
